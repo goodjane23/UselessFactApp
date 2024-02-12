@@ -15,6 +15,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -36,19 +37,20 @@ public sealed partial class MainWindow : Window
     //GET /api/v2/facts/random
     private async void myButton_Click(object sender, RoutedEventArgs e)
     {
-        await SendRequest("random");        
+        FactTbl.Text = await SendRequest("random");
     }
 
     private async void myButton_Click1(object sender, RoutedEventArgs e)
     {
-        await SendRequest("today");
+        FactTbl.Text = await SendRequest("today");
     }
 
-    private async Task SendRequest(string url)
+    private async Task<string> SendRequest(string url)
     {
         var result = await client.GetAsync($"/api/v2/facts/{url}");
         var text = await result.Content.ReadAsStringAsync();
         var responseModel = JsonSerializer.Deserialize<ResponseModel>(text);
+        return responseModel.Text;
     }
 
 }
