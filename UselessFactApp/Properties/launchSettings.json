@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "UselessFactApp (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "UselessFactApp (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
