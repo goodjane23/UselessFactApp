@@ -8,10 +8,18 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
-        <Button x:Name="myButton1" Click="myButton_Click1">Click Me</Button>
-        <TextBlock x:Name="FactTbl" Margin="10" />
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock x:Name="factTbl" Grid.Row="0" Margin="10" TextWrapping="Wrap"/>
 
-    </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Button x:Name="myButton" Click="myButton_Click">Random fact</Button>
+            <Button x:Name="myButton1" Click="myButton_Click1">Daily fact</Button>
+        </StackPanel>
+
+    </Grid>
 </Window>
